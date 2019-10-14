@@ -12,7 +12,7 @@
 //
 
 //= require jquery
-//= require bootstrap
+
 //= require cocoon
 //= require turbolinks
 //= require_tree .
