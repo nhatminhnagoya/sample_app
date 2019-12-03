@@ -10,12 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_09_30_020813) do
+ActiveRecord::Schema.define(version: 2019_12_03_081314) do
 
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
-
-  create_table "active_storage_attachments", force: :cascade do |t|
+  create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
     t.bigint "record_id", null: false
@@ -25,7 +22,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
   end
 
-  create_table "active_storage_blobs", force: :cascade do |t|
+  create_table "active_storage_blobs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "key", null: false
     t.string "filename", null: false
     t.string "content_type"
@@ -36,7 +33,22 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
   end
 
-  create_table "cart_items", force: :cascade do |t|
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
+    t.string "apartment"
+    t.string "city"
+    t.string "state"
+    t.string "country"
+    t.string "zip"
+    t.string "phone"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
+
+  create_table "cart_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "cart_id", null: false
     t.bigint "product_id", null: false
@@ -48,14 +60,14 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.index ["variant_id"], name: "index_cart_items_on_variant_id"
   end
 
-  create_table "carts", force: :cascade do |t|
+  create_table "carts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_carts_on_user_id"
   end
 
-  create_table "guest_cart_items", force: :cascade do |t|
+  create_table "guest_cart_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "guest_cart_id", null: false
     t.bigint "product_id", null: false
@@ -67,12 +79,12 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.index ["variant_id"], name: "index_guest_cart_items_on_variant_id"
   end
 
-  create_table "guest_carts", force: :cascade do |t|
+  create_table "guest_carts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "guest_wish_items", force: :cascade do |t|
+  create_table "guest_wish_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "guest_wish_id", null: false
     t.bigint "product_id", null: false
     t.bigint "variant_id", null: false
@@ -83,12 +95,12 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.index ["variant_id"], name: "index_guest_wish_items_on_variant_id"
   end
 
-  create_table "guest_wishes", force: :cascade do |t|
+  create_table "guest_wishes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "microposts", force: :cascade do |t|
+  create_table "microposts", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.text "content"
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
@@ -97,7 +109,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.index ["user_id"], name: "index_microposts_on_user_id"
   end
 
-  create_table "order_items", force: :cascade do |t|
+  create_table "order_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "quantity"
     t.bigint "order_id", null: false
     t.bigint "product_id", null: false
@@ -109,7 +121,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.index ["variant_id"], name: "index_order_items_on_variant_id"
   end
 
-  create_table "orders", force: :cascade do |t|
+  create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "method"
     t.string "status"
     t.string "details"
@@ -117,7 +129,18 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "products", force: :cascade do |t|
+  create_table "payments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "name"
+    t.integer "number"
+    t.datetime "expiry_date"
+    t.integer "cvv"
+    t.bigint "user_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_payments_on_user_id"
+  end
+
+  create_table "products", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "jan_code"
     t.string "gender"
@@ -134,14 +157,14 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "projects", force: :cascade do |t|
+  create_table "projects", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "description"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
-  create_table "relationships", force: :cascade do |t|
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.integer "follower_id"
     t.integer "followed_id"
     t.datetime "created_at", precision: 6, null: false
@@ -151,7 +174,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.index ["follower_id"], name: "index_relationships_on_follower_id"
   end
 
-  create_table "reviews", force: :cascade do |t|
+  create_table "reviews", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "reviewer"
     t.text "content"
     t.bigint "product_id", null: false
@@ -160,7 +183,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.index ["product_id"], name: "index_reviews_on_product_id"
   end
 
-  create_table "tasks", force: :cascade do |t|
+  create_table "tasks", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "description"
     t.boolean "done"
     t.bigint "project_id"
@@ -169,7 +192,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.index ["project_id"], name: "index_tasks_on_project_id"
   end
 
-  create_table "users", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "name"
     t.string "email"
     t.datetime "created_at", precision: 6, null: false
@@ -185,7 +208,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
-  create_table "variants", force: :cascade do |t|
+  create_table "variants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "color"
     t.float "price"
     t.float "originalprice"
@@ -197,7 +220,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.index ["product_id"], name: "index_variants_on_product_id"
   end
 
-  create_table "wish_items", force: :cascade do |t|
+  create_table "wish_items", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "wish_id", null: false
     t.bigint "product_id", null: false
     t.bigint "variant_id", null: false
@@ -208,7 +231,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
     t.index ["wish_id"], name: "index_wish_items_on_wish_id"
   end
 
-  create_table "wishes", force: :cascade do |t|
+  create_table "wishes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -216,6 +239,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "addresses", "users"
   add_foreign_key "cart_items", "carts"
   add_foreign_key "cart_items", "products"
   add_foreign_key "cart_items", "variants"
@@ -230,6 +254,7 @@ ActiveRecord::Schema.define(version: 2019_09_30_020813) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "order_items", "variants"
+  add_foreign_key "payments", "users"
   add_foreign_key "reviews", "products"
   add_foreign_key "tasks", "projects"
   add_foreign_key "variants", "products"

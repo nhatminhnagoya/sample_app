@@ -24,12 +24,18 @@ class OrdersController < ApplicationController
   end
 
   def checkout4
+    products = current_cart.list.variants
+    @products_purchase = products.where(stripe_plan_name:nil, paypal_plan_name:nil)
+    @products_subscription = products - @products_purchase
   end
 
   def checkout5
   end
 
   def addresses
+  end
+
+  def submit
   end
 
   def create

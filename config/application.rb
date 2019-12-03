@@ -32,6 +32,11 @@ module SampleApp
     # Don't generate system test files.
     config.generators.system_tests = nil
 
+    config_file = Rails.application.config_for(:application)
+    config_file.each do |key,value|
+      ENV[key] = value
+    end unless config_file.nil?
+
   end
 end
 Rails.application.config.active_record.belongs_to_required_by_default = false
