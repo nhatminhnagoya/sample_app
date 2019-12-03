@@ -42,13 +42,14 @@ scope "(:locale)", locale: /us|de|fr/ do
   resources :wish_items, only: [:create, :destroy]
   resources :guest_wish_items, only: [:create, :destroy]
   get 'wish', to: 'wish#index'
-  resources :orders
+  resources :orders, only: [:index, :show]
+  post '/orders/submit', to: 'orders#submit'
   get 'checkout1', to: 'orders#checkout1'
   get 'checkout2', to: 'orders#checkout2'
   get 'checkout3', to: 'orders#checkout3'
   get 'checkout4', to: 'orders#checkout4'
   get 'checkout5', to: 'orders#checkout5'
-  get 'addresses', to: 'orders#addresses'
+  get 'addresses', to: 'addresses#index'
 
   namespace :admin do
     root 'static_pages#home'

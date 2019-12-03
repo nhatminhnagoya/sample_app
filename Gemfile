@@ -62,3 +62,5 @@ gem "font-awesome-sass", "~> 5.11"
 gem "slim", "~> 4.0"
 gem 'rails-i18n', '~> 6.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
+gem 'stripe-rails', '~> 1.9', '>= 1.9.1'
+gem 'paypal-sdk-rest', '~> 1.7', '>= 1.7.3'

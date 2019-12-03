@@ -6,6 +6,8 @@ class CreateVariants < ActiveRecord::Migration[6.0]
       t.float :originalprice
       t.text :sku
       t.integer :stock
+      t.string :stripe_plan_name
+      t.string :paypal_plan_name
       t.references :product, null: false, foreign_key: true
 
       t.timestamps
