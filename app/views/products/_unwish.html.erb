@@ -1,5 +1,9 @@
 <%= form_for(current_wish.list.find_by(product_id: @product.id, variant_id: @variant.id),
              html: { method: :delete },
              remote: true) do |f| %>
-  <%= f.submit "Remove from Wishlist", class: "btn btn-danger" %>
+  <li class="list-inline-item">
+    <button type="submit" name="commit" value="Remove from Wishlist" class="btn btn-danger" data-disable-with="Remove from Wishlist">
+      <i class="fa fa-heart"></i>Remove from Wishlist
+    </button>
+  </li>
 <% end %>
