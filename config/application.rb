@@ -36,6 +36,12 @@ module SampleApp
     config.time_zone = 'UTC'
     config.active_record.default_timezone = :local
 
+    config.middleware.insert_before 0, Rack::Cors do
+      allow do
+        origins '*'
+        resource '*', headers: :any, methods: [:get, :post, :options]
+      end
+    end
   end
 end
 Rails.application.config.active_record.belongs_to_required_by_default = false

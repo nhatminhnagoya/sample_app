@@ -58,6 +58,7 @@ gem "font-awesome-sass", "~> 5.11"
 gem "slim", "~> 4.0"
 gem 'rails-i18n', '~> 6.0'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
+gem 'rack-cors'
 
 # kill -9 $(lsof -i tcp:3000 -t)
 # gem 'simple_form', '~> 5.0', '>= 5.0.1'
