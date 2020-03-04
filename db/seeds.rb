@@ -50,16 +50,16 @@ u = "#{Rails.root.to_s}/app/assets/images/img"
                       jan_code: '0886'<<i.to_s,
                       variants_attributes: {
                         0 => {
-                          color: 'Black', price: '65', originalprice: '90', sku: 'AQ0886', stock: '1000'
+                          color: 'Black', price: rand(50...500), originalprice: '90', sku: 'AQ0886', stock: '1000'
                         },
                         1 => {
-                          color: 'Black', price: '65', originalprice: '90', sku: 'AQ0886', stock: '1000'
+                          color: 'Black', price: rand(50...500), originalprice: '90', sku: 'AQ0886', stock: '1000'
                         },
                         2 => {
-                          color: 'Black', price: '65', originalprice: '90', sku: 'AQ0886', stock: '1000'
+                          color: 'Black', price: rand(50...500), originalprice: '90', sku: 'AQ0886', stock: '1000'
                         },
                         3 => {
-                          color: 'Black', price: '65', originalprice: '90', sku: 'AQ0886', stock: '1000'
+                          color: 'Black', price: rand(50...500), originalprice: '90', sku: 'AQ0886', stock: '1000'
                         },
                       })
   t=i%12
