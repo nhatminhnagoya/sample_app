@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 # scope "/:locale" do
 scope "(:locale)", locale: /#{I18n.available_locales.join('|')}/ do
+  mount Facebook::Messenger::Server, at: "bot"
   get '/:locale' => 'static_pages#home'
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   get 'password_resets/new'

@@ -36,6 +36,10 @@ module SampleApp
     config.time_zone = 'UTC'
     config.active_record.default_timezone = :local
 
+    # Auto-load /bot and its subdirectories
+    config.paths.add File.join("app", "bot"), glob: File.join("**","*.rb")
+    config.autoload_paths += Dir[Rails.root.join("app", "bot", "*")]
+
   end
 end
 Rails.application.config.active_record.belongs_to_required_by_default = false

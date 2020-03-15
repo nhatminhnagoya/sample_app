@@ -67,3 +67,5 @@ gem 'jquery-rails', '~> 4.3', '>= 4.3.5'
 # gem 'money', '~> 6.13', '>= 6.13.6'
 
 gem 'rack-cors'
+gem 'facebook-messenger'
+gem 'dotenv-rails'
